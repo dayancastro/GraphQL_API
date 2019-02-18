@@ -10,6 +10,7 @@ using Microsoft.Extensions.DependencyInjection;
 using RealEstateManager.DataAccess.Repositories;
 using RealEstateManager.DataAccess.Repositories.Contracts;
 using RealEstateManager.Database;
+using RealEstateManager.Mutations;
 using RealEstateManager.Queries;
 using RealEstateManager.Schema;
 using RealEstateManager.Types;
@@ -38,6 +39,9 @@ namespace RealEstateManager
 
             services.AddSingleton<IDocumentExecuter, DocumentExecuter>();
             services.AddSingleton<PropertyQuery>();
+            services.AddSingleton<PropertyMutation>();
+            services.AddSingleton<PropertyInputType>();
+
             services.AddSingleton<PropertyType>();
 
             services.AddSingleton<PaymentQuery>();

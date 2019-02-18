@@ -21,6 +21,10 @@ namespace RealEstateManager.Queries
                 "payments",
                 resolve: context => paymentRepository.GetAll()
                 );
+
+            Field<PropertyType>("property",
+                arguments: new QueryArguments(new QueryArgument<IntGraphType> { Name = "id" }),
+                resolve: context => propertyRepository.GetById(context.GetArgument<int>("id")));
         }
     }
 }

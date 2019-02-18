@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 
 namespace RealEstateManager.Database.Models
 {
@@ -13,5 +11,7 @@ namespace RealEstateManager.Database.Models
         public decimal Value { get; set; }
         public string Family { get; set; }
         public ICollection<Payment> Payments { get; set; }
+
+        public ICollection<Owner> HistoricalOwners { get; set; }
     }
 }
