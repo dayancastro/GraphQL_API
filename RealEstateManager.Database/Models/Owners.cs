@@ -12,6 +12,6 @@ namespace RealEstateManager.Database.Models
         public double PurchaseValue { get; set; }
         public double SellValue { get; set; }
 
-        public ICollection<Property> HistoricalProperties { get; set; }
+        public ICollection<PropertyOwner> PropertyOwners { get; set; }
     }
 }

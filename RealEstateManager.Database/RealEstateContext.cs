@@ -1,9 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using RealEstateManager.Database.Models;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace RealEstateManager.Database
 {
@@ -16,5 +12,13 @@ namespace RealEstateManager.Database
 
         public DbSet<Database.Models.Property> Properties { get; set; }
         public DbSet<Payment> Payments { get; set; }
+        public DbSet<Owner> Owners { get; set; }
+        public DbSet<PropertyOwner> PropertyOwners { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<PropertyOwner>().HasKey(po => new { po.OwnerId, po.PropertyId });
+        }
+
     }
 }
