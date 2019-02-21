@@ -33,6 +33,8 @@ namespace RealEstateManager
 
             services.AddTransient<IPropertyRepository, PropertyRepository>();
             services.AddTransient<IPaymentRepository, PaymentRepository>();
+            //services.AddTransient<IPropertyOwnerRepository, PropertyOwnerRepository>();
+            services.AddTransient<IOwnerRepository, OwnerRepository>();
 
             services.AddDbContext<RealEstateContext>(options =>
                 options.UseSqlServer(Configuration["ConnectionStrings:RealEstateDb"]));
@@ -41,11 +43,20 @@ namespace RealEstateManager
             services.AddSingleton<PropertyQuery>();
             services.AddSingleton<PropertyMutation>();
             services.AddSingleton<PropertyInputType>();
-
             services.AddSingleton<PropertyType>();
-
+            
             services.AddSingleton<PaymentQuery>();
             services.AddSingleton<PaymentType>();
+
+            //services.AddSingleton<PropertyOwnerQuery>();
+            //services.AddSingleton<PropertyOwnerMutation>();
+            //services.AddSingleton<PropertyOnwerInputType>();
+            //services.AddSingleton<PropertyOwnerType>();
+
+            services.AddSingleton<OwnerInputType>();
+            services.AddSingleton<OwnerType>();
+            services.AddSingleton<OwnerKeyType>();
+            services.AddSingleton<OwnerKeyInputType>();
 
             var sp = services.BuildServiceProvider();
             services.AddSingleton<ISchema>(

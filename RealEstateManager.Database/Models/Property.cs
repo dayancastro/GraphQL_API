@@ -12,6 +12,6 @@ namespace RealEstateManager.Database.Models
         public string Family { get; set; }
         public ICollection<Payment> Payments { get; set; }
 
-        public ICollection<PropertyOwner> PropertyOwners { get; set; }
+        //public ICollection<PropertyOwner> PropertyOwners { get; set; }
     }
 }

@@ -7,7 +7,7 @@ namespace RealEstateManager.Mutations
 {
     public class PropertyMutation : ObjectGraphType
     {
-        public PropertyMutation(IPropertyRepository propertyRepository)
+        public PropertyMutation(IPropertyRepository propertyRepository, IOwnerRepository ownerRepository)
         {
             Field<PropertyType>(
                 "addProperty",
@@ -17,6 +17,16 @@ namespace RealEstateManager.Mutations
                 {
                     var property = context.GetArgument<Property>("property");
                     return propertyRepository.Add(property);
+                });
+
+            Field<OwnerType>(
+                "addOwner",
+                arguments: new QueryArguments(
+                    new QueryArgument<NonNullGraphType<OwnerInputType>> { Name = "owner" }),
+                resolve: context =>
+                {
+                    var owner = context.GetArgument<Owner>("owner");
+                    return ownerRepository.Add(owner);
                 });
 
             Field<BooleanGraphType>(

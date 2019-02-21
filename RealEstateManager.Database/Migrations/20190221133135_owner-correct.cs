@@ -4,10 +4,23 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace RealEstateManager.Database.Migrations
 {
-    public partial class Initial : Migration
+    public partial class ownercorrect : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.CreateTable(
+                name: "Owners",
+                columns: table => new
+                {
+                    Type = table.Column<int>(nullable: false),
+                    Name = table.Column<string>(nullable: false),
+                    Address = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Owners", x => new { x.Type, x.Name });
+                });
+
             migrationBuilder.CreateTable(
                 name: "Properties",
                 columns: table => new
@@ -56,6 +69,9 @@ namespace RealEstateManager.Database.Migrations
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.DropTable(
+                name: "Owners");
+
             migrationBuilder.DropTable(
                 name: "Payments");
 

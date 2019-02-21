@@ -6,12 +6,10 @@ namespace RealEstateManager.Database.Models
 {
     public class Owner
     {
-        public int Id { get; set; }
-        public DateTime PurchaseDate { get; set; }
-        public DateTime SellDate { get; set; }
-        public double PurchaseValue { get; set; }
-        public double SellValue { get; set; }
+        public int Type { get; set; }
+        public string Name { get; set; }
+        public string Address { get; set; }
 
-        public ICollection<PropertyOwner> PropertyOwners { get; set; }
+        //public ICollection<PropertyOwner> PropertyOwners { get; set; }
     }
 }

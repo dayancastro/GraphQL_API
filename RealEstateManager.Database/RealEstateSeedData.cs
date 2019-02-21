@@ -2,7 +2,6 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
 namespace RealEstateManager.Database
 {
@@ -111,6 +110,13 @@ namespace RealEstateManager.Database
                         }
                     }
                 };
+
+                db.Owners.Add(new Owner()
+                {
+                    Type = 1,
+                    Name = "Dayan",
+                    Address = "",
+                });
 
                 db.Properties.AddRange(properties);
                 db.SaveChanges();

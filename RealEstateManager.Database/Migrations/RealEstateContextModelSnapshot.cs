@@ -21,19 +21,13 @@ namespace RealEstateManager.Database.Migrations
 
             modelBuilder.Entity("RealEstateManager.Database.Models.Owner", b =>
                 {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                    b.Property<int>("Type");
 
-                    b.Property<DateTime>("PurchaseDate");
+                    b.Property<string>("Name");
 
-                    b.Property<double>("PurchaseValue");
+                    b.Property<string>("Address");
 
-                    b.Property<DateTime>("SellDate");
-
-                    b.Property<double>("SellValue");
-
-                    b.HasKey("Id");
+                    b.HasKey("Type", "Name");
 
                     b.ToTable("Owners");
                 });
@@ -82,36 +76,10 @@ namespace RealEstateManager.Database.Migrations
                     b.ToTable("Properties");
                 });
 
-            modelBuilder.Entity("RealEstateManager.Database.Models.PropertyOwner", b =>
-                {
-                    b.Property<int>("OwnerId");
-
-                    b.Property<int>("PropertyId");
-
-                    b.HasKey("OwnerId", "PropertyId");
-
-                    b.HasIndex("PropertyId");
-
-                    b.ToTable("PropertyOwners");
-                });
-
             modelBuilder.Entity("RealEstateManager.Database.Models.Payment", b =>
                 {
                     b.HasOne("RealEstateManager.Database.Models.Property", "Property")
                         .WithMany("Payments")
-                        .HasForeignKey("PropertyId")
-                        .OnDelete(DeleteBehavior.Cascade);
-                });
-
-            modelBuilder.Entity("RealEstateManager.Database.Models.PropertyOwner", b =>
-                {
-                    b.HasOne("RealEstateManager.Database.Models.Owner", "Owner")
-                        .WithMany("PropertyOwners")
-                        .HasForeignKey("OwnerId")
-                        .OnDelete(DeleteBehavior.Cascade);
-
-                    b.HasOne("RealEstateManager.Database.Models.Property", "Property")
-                        .WithMany("PropertyOwners")
                         .HasForeignKey("PropertyId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
